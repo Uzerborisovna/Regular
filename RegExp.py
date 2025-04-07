@@ -4,7 +4,7 @@ import csv
 with open("phonebook_raw.csv", encoding="utf-8") as f:
   rows = csv.reader(f, delimiter=",")
   contacts_list = list(rows)
-#pprint(contacts_list)
+  #print(contacts_list)
 
 # Поместить Фамилию, Имя и Отчество человека в поля lastname, firstname и surname соответственно.
 # В записной книжке изначально может быть Ф + ИО, ФИО, а может быть сразу правильно: Ф+И+О.
@@ -12,10 +12,10 @@ with open("phonebook_raw.csv", encoding="utf-8") as f:
 
 for item in contacts_list:
     initials = ' '.join(item[:3]).split(' ')
-    all_initials = initials[0], initials[1], initials[2]
-    #pprint(all_initials)
+    all_initials = [initials[0], initials[1], initials[2]]
+    #print(all_initials)
 
-# Привести все телефоны в формат +7(999)999-99-99.
+    # Привести все телефоны в формат +7(999)999-99-99.
 # Если есть добавочный номер, формат будет такой: +7(999)999-99-99 доб.9999.
 # Подсказка: используйте регулярки для обработки телефонов.
 
@@ -28,16 +28,16 @@ for item in contacts_list:
         contact[5] = phone_pattern.sub(phone_substitution, contact[5])
         #pprint(contact[5])
 
-    for contact in contacts_list:
-        str_all = all_initials, contact[3], contact[4], contact[5], contact[6]
-    print(str_all)
-
 # Объединить все дублирующиеся записи о человеке в одну.
 # Подсказка: группируйте записи по ФИО (если будет сложно, допускается группировать только по ФИ).
 
-new_contacts_list = []
-
-
+    all_initials_list = []
+    for fio in all_initials:
+        if all_initials[0] not in all_initials_list:
+            all_initials_list.append(all_initials[0])
+            # all_initials_list.append(all_initials[1])
+            # all_initials_list.append(all_initials[2])
+    print(all_initials_list)
 
 
 # TODO 2: сохраните получившиеся данные в другой файл
