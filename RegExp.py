@@ -83,7 +83,7 @@ print(res_list)
 
 # TODO 2: сохраните получившиеся данные в другой файл
 # код для записи файла в формате CSV
-#with open("phonebook.csv", "w", encoding="utf-8") as f:
-  #datawriter = csv.writer(f, delimiter=',')
-  # Вместо contacts_list подставьте свой список
-  #datawriter.writerows(contacts_list)
+with open("phonebook.csv", "w", encoding="utf-8") as f:
+  datawriter = csv.writer(f, delimiter=',')
+#Вместо contacts_list подставьте свой список
+  datawriter.writerows(res_list)
